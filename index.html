@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desire Clean - Coming Soon</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            overflow-x: hidden;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(to right, #007bff, #00c6ff);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: background 0.3s ease;
+        }
+        header.scrolled {
+            background: rgba(0, 123, 255, 0.9);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+        .nav-links a {
+            padding: 0.5rem 1rem;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: url('https://via.placeholder.com/1920x1080?text=Clean+Background') no-repeat center/cover;
+            color: white;
+            position: relative;
+        }
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        #hero > * {
+            position: relative;
+            z-index: 1;
+        }
+        #hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease-out;
+        }
+        #hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.5s;
+            animation-fill-mode: both;
+        }
+        .btn {
+            background: #007bff;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            transition: transform 0.3s, background 0.3s;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+            background: #0056b3;
+        }
+
+        /* About Section */
+        #about {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            transform: translateY(-50px);
+            border-radius: 10px;
+        }
+        #about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        #about p {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Products Section */
+        #products {
+            padding: 5rem 2rem;
+            background: #f9f9f9;
+            text-align: center;
+        }
+        #products h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        .product-card {
+            display: inline-block;
+            width: 300px;
+            background: white;
+            padding: 1rem;
+            margin: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        .product-card img {
+            width: 100%;
+            border-radius: 10px 10px 0 0;
+        }
+        .product-card h3 {
+            margin: 1rem 0;
+        }
+        .coming-soon {
+            color: #ff4500;
+            font-weight: bold;
+        }
+
+        /* Contact Section */
+        #contact {
+            padding: 5rem 2rem;
+            background: linear-gradient(to right, #007bff, #00c6ff);
+            color: white;
+            text-align: center;
+        }
+        #contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        .contact-info {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .contact-info p {
+            margin-bottom: 1rem;
+        }
+        form {
+            max-width: 600px;
+            margin: 2rem auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        input, textarea {
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            padding: 1rem;
+            background: white;
+            color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #f0f0f0;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            background: #333;
+            color: white;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            #hero h1 { font-size: 3rem; }
+            #hero p { font-size: 1.2rem; }
+            nav { flex-direction: column; }
+            .nav-links { flex-direction: column; gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Desire Clean</div>
+            <div class="nav-links">
+                <a href="#hero">Home</a>
+                <a href="#about">About</a>
+                <a href="#products">Products</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <h1>Welcome to Desire Clean</h1>
+        <p>Revolutionizing your cleaning experience with innovative, eco-friendly solutions. Our products are coming soon!</p>
+        <a href="#products" class="btn">Learn More</a>
+    </section>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>Desire Clean is a new cleaning company based in Lahore, Pakistan. We are dedicated to providing high-quality, sustainable cleaning products that make your life easier and the planet cleaner.</p>
+        <p>Our office is located at DHA Phase 1, Lahore. We are excited to launch soon and bring our innovative products to you.</p>
+    </section>
+
+    <section id="products">
+        <h2>Our Products</h2>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/300x200?text=Laundry+Pod" alt="Laundry Pod">
+            <h3>Laundry Pods</h3>
+            <p>A small packet made of water-soluble material containing a powerful liquid to wash your clothes efficiently.</p>
+            <p class="coming-soon">Coming Soon!</p>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/300x200?text=Future+Products" alt="Future Products">
+            <h3>More Products</h3>
+            <p>Stay tuned for our upcoming range of cleaning solutions.</p>
+            <p class="coming-soon">Coming Soon!</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-info">
+            <p>Email: alir75619@gmail.com</p>
+            <p>Phone: +923167480810</p>
+            <p>Office: DHA Phase 1, Lahore</p>
+        </div>
+        <form id="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Desire Clean. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            header.classList.toggle('scrolled', window.scrollY > 0);
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Contact form submission (demo alert)
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Message sent! (This is a demo)');
+        });
+    </script>
+</body>
+</html>
+
